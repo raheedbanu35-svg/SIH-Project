@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attendance Assistant</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Attendance Assistant</h1>
+      <p class="sub">Tap to mark, or just tell the assistant who is here.</p>
+    </div>
+    <label class="datebox">Date
+      <input type="date" id="date">
+    </label>
+  </header>
+
+  <section class="card summary" aria-labelledby="sumTitle">
+    <div class="summary-head">
+      <h2 id="sumTitle">Today's register</h2>
+      <div class="summary-actions"><button type="button" class="btn" id="copy">Copy report</button><button type="button" class="btn" id="exportDay" hidden>Export CSV</button></div>
+    </div>
+    <div class="counts" id="counts"></div>
+    <div class="bar" aria-hidden="true"><i class="present" id="bp"></i><i class="late" id="bl"></i><i class="absent" id="ba"></i></div>
+    <p class="caption" id="caption"></p>
+  </section>
+
+  <div class="main">
+    <section class="assist" aria-labelledby="asTitle">
+      <h2 id="asTitle">Assistant</h2>
+      <p class="hint">Write it the way you'd say it. I'll update the register.</p>
+      <p class="ai-note" id="aiNote"></p>
+      <div class="log" id="log" role="log" aria-live="polite"></div>
+      <div class="chips" id="chips"></div>
+      <div class="stoprow"><button type="button" class="chip" id="stopAI" hidden>Stop</button></div>
+      <form class="ask" id="askForm" autocomplete="off">
