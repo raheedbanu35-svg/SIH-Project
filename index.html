@@ -5,36 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Attendance Assistant</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="wrap">
-  <header class="top">
-    <div>
-      <h1>Attendance Assistant</h1>
-      <p class="sub">Tap to mark, or just tell the assistant who is here.</p>
-    </div>
-    <label class="datebox">Date
-      <input type="date" id="date">
-    </label>
-  </header>
-
-  <section class="card summary" aria-labelledby="sumTitle">
-    <div class="summary-head">
-      <h2 id="sumTitle">Today's register</h2>
-      <div class="summary-actions"><button type="button" class="btn" id="copy">Copy report</button><button type="button" class="btn" id="exportDay" hidden>Export CSV</button></div>
-    </div>
-    <div class="counts" id="counts"></div>
-    <div class="bar" aria-hidden="true"><i class="present" id="bp"></i><i class="late" id="bl"></i><i class="absent" id="ba"></i></div>
-    <p class="caption" id="caption"></p>
-  </section>
-
-  <div class="main">
-    <section class="assist" aria-labelledby="asTitle">
-      <h2 id="asTitle">Assistant</h2>
-      <p class="hint">Write it the way you'd say it. I'll update the register.</p>
-      <p class="ai-note" id="aiNote"></p>
-      <div class="log" id="log" role="log" aria-live="polite"></div>
-      <div class="chips" id="chips"></div>
-      <div class="stoprow"><button type="button" class="chip" id="stopAI" hidden>Stop</button></div>
-      <form class="ask" id="askForm" autocomplete="off">
+<style>
+:root{
+  --bg:#E8EDF4; --surface:#FFFFFF; --surface-2:#F1F4F9; --ink:#15203B; --ink-2:#55627D; --line:#D5DDE8;
+  --accent:#3D4FD8;
+  --present:#08806D; --present-on:#FFFFFF; --present-bg:#DDF4EE;
+  --late:#EBA92A;    --late-on:#15203B;    --late-bg:#FBEFD2;
+  --absent:#C93443;  --absent-on:#FFFFFF;  --absent-bg:#FBE2E4;
+  --none:#9AA6BC;
+  --assist-bg:#1D2760; --assist-ink:#EEF1FF; --assist-soft:rgba(255,255,255,.12); --assist-line:rgba(255,255,255,.28);
+  --shadow:0 1px 2px rgba(21,32,59,.06),0 8px 24px rgba(21,32,59,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1424; --surface:#172038; --surface-2:#1E2946; --ink:#E7ECF7; --ink-2:#9AA7C4; --line:#2B3858;
+    --accent:#8B97FF;
+    --present:#2FC4A8; --present-on:#06251F; --present-bg:#12352F;
+    --late:#F0B84A;    --late-on:#2A1E00;    --late-bg:#3A2F14;
+    --absent:#FF6B78;  --absent-on:#3B0A10;  --absent-bg:#3B1A22;
+    --none:#5F6C89;
+    --assist-bg:#222D6E; --assist-ink:#EEF1FF;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1424; --surface:#172038; --surface-2:#1E2946; --ink:#E7ECF7; --ink-2:#9AA7C4; --line:#2B3858;
+  --accent:#8B97FF;
+  --present:#2FC4A8; --present-on:#06251F; --present-bg:#12352F;
+  --late:#F0B84A;    --late-on:#2A1E00;    --late-bg:#3A2F14;
+  --absent:#FF6B78;  --absent-on:#3B0A10;  --absent-bg:#3B1A22;
+  --none:#5F6C89;
+  --assist-bg:#222D6E; --assist-ink:#EEF1FF;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
